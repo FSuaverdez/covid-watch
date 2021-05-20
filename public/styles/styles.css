@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+  height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  color: #333;
+}
+a {
+  text-decoration: none;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+.container {
+  max-width: 1140px;
+  margin: auto;
+}
+
+/* log-in and sign-up */
+
+#header {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  text-align: center;
+  color: #fff;
+  background-color: #e33e25;
+}
+.nav {
+  background-color: #e33e25;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav a {
+  padding: 10px;
+  color: #fff;
+}
+
+.nav a:hover {
+  background-color: #f19b8e;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.card-cont {
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 40%;
+  display: table;
+  margin-bottom: 20px;
+}
+
+.ticket-container {
+  padding: 20px 0;
+}
+
+.ticket a {
+  color: #e33e25;
+}
+
+.ticket a:hover {
+  color: #f19b8e;
+}
+
+.ticket {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 710px;
+  margin: 20px auto;
+}
+
+.attachments h6 {
+  margin-top: 20px;
+}
+
+.attachment a {
+  display: inline-block;
+}
+
+.attachment {
+  background-color: #444;
+  color: #f4f4f4;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 10px;
+  margin: 6px auto;
+}
+
+.ticket-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ticket p {
+  color: #444;
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+.ticket-card {
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  padding: 10px;
+}
+
+.ticket-card h2 {
+  font-size: 36px;
+}
+
+.ticket-card p {
+  margin-top: 10px;
+  color: #444;
+  white-space: pre-wrap;
+}
+
+.reply {
+  text-align: center;
+}
+
+.status {
+  font-size: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.open {
+  background-color: green;
+}
+
+.closed {
+  background-color: red;
+}
+
+#log {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+.input {
+  padding: 10px;
+  height: 40px;
+  width: 98%;
+}
+.btn {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn {
+  background-color: #e33e25;
+  border: none;
+  color: #fff;
+}
+.btn:hover {
+  background-color: #f19b8e;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+#details {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+#title {
+  margin-bottom: 10px;
+}
+#subject {
+  padding: 5px;
+  width: 98%;
+  margin-bottom: 20px;
+}
+
+#body {
+  padding: 5px;
+  height: 128px;
+  width: 98%;
+  margin-bottom: 20px;
+}
+
+#details {
+  height: 10px;
+  width: 98%;
+  margin-bottom: 40px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width: 50%;
+  width: 300px;
+  height: 300px;
+}
+
+#quote {
+  text-align: center;
+  font-size: 50px;
+  margin-top: 50px;
+}
+
+#questions {
+  font-size: 20px;
+  color: #333;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#answers {
+  font-size: 20px;
+  color: white;
+  text-align: left;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.dropdown {
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: -10px;
+  background-color: #e33e25;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  width: 100%;
+  margin: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form button {
+  margin: auto;
+  max-width: 200px;
+}
+
+.home {
+  height: 100vh;
+}
+#users {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#users td,
+#users th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#users tr:hover {
+  background-color: rgb(243, 243, 243);
+}
+
+#users th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f19b8e;
+  color: white;
+}
+#faq-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+#faqs {
+  background-color: #cc311a;
+  max-width: 100%;
+  height: 50px;
+  display: table;
+  text-align: center;
+  margin-bottom: 50px;
+  border-radius: 3px;
+  min-width: 100px;
+  margin-bottom: 630px;
+}
+button {
+  display: inline;
+  border-bottom: rgba(0, 0, 0, 0.2);
+  margin-right: 30px;
+  margin-left: 30px;
+  border-radius: 3px;
+  margin: 10px;
+  font-weight: bold;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 13px 25px 0 rgba(0, 0, 0, 0.2);
+}
+.pshort {
+  width: 150px;
+  text-align: center;
+}
+.dropbtn {
+  background-color: #e33e25;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn:hover {
+  color: #e33e25;
+  background-color: #fcebe9;
+}
+.active {
+  color: #00b2ff;
+  background-color: white;
+}
+.content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  max-width: 720px;
+  text-align: center;
+  height: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+  overflow: hidden;
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 15px;
+  max-width: 720px;
+  min-width: 100px;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+.accordion:hover {
+  background-color: #fff;
+}
+
+.panel {
+  padding: 10px;
+  background-color: #e75843;
+  text-align: center;
+  display: none;
+  overflow: hidden;
+  max-width: 720px;
+  min-width: 100px;
+  transition: max-height 0.2s ease-out;
+}
+
+.panel p {
+  font-size: 18px;
+}
+
+.footer {
+  background-color: #e33e25;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 3;
+  position: fixed;
+}
+.signup {
+  height: 100vh;
+  margin: 50px auto;
+}
+#answers.ref{
+  font-size: 15px;
+  font-weight: bold;
+
+}
+#answers.ref a{
+  color: white;
+  text-decoration: underline;
+}

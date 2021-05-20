@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/mobile.css">
+  <title>Service Ticket</title>
+</head>
+
+<body>
+  <div id="header">
+    <h2>Comhub Service Status</h2>
+  </div>
+  <%- include('../../partials/navlinks'); -%>
+    <div class="container">
+      <a class="btn" href="/support">Back</a>
+
+      <div class="ticket-container">
+        <a href="/admin/tickets/open" class="btn">All Open Tickets</a>
+        <a href="/admin/tickets/close" class="btn">All Closed Tickets</a>
+        <a href="/admin/tickets/all" class="btn">All Tickets</a>
+        <% tickets.forEach(ticket=> { %>
+          <div class="ticket">
+            <a href="/support/ticket/<%= ticket._id %> ">
+              <div class="ticket-title">
+                <h2>
+                  <%= ticket.subject %>
+                </h2> <span class="status <%= ticket.isOpen? " open" :"closed" %> "><%= ticket.isOpen? "Open" :"Closed"
+                    %>
+                </span>
+                <h6>
+                  <%= new Date( new Date(ticket.createdAt).setHours( new Date(ticket.createdAt).getHours() + 8
+                    )).toLocaleString() %>
+                </h6>
+              </div>
+              <p>
+                <%= ticket.body %>
+              </p>
+            </a>
+          </div>
+          <% }) %>
+      </div>
+
+    </div>
+
+</body>
+
+</html>

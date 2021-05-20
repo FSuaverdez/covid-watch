@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/mobile.css">
+  <title>Sign up</title>
+</head>
+
+<body>
+  <header>
+    <div id="header">
+      <h2>Web Clinic</h2>
+    </div>
+    <%- include('../partials/navlinks'); -%>
+  </header>
+  <div class="container signup">
+    <div class="card">
+      <div class="card-cont">
+        <div id="log">
+          <h2 class="card-header">Sign-up</h2>
+        </div>
+        <form>
+          <div>
+            <div>First Name</div>
+            <input type="text" class="input" name="firstName" placeholder="Enter your first name" required>
+            <div class="firstName error"></div>
+            <div>Last Name</div>
+            <input type="text" class="input" name="lastName" placeholder="Enter your name name" required>
+            <div class="lastName error"></div>
+          </div>
+          <div>
+            <div>Gender</div>
+            <select name="gender" class="input" required>
+              <option disabled selected hidden>Choose gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Others">Others</option>
+            </select>
+            <div class="gender error"></div>
+          </div>
+          <div>
+            <div>Contact number</div>
+            <input type="text" class="input" name="contactNo" placeholder="Enter your contact number" required>
+            <div class="contactNo error"></div>
+          </div>
+          <div>
+            <div>Address</div>
+            <input type="text" class="input" name="address" placeholder="Enter your Address" required>
+            <div class="address error"></div>
+          </div>
+          <div>
+            <div>Email</div>
+            <input type="email" class="input" name="email" placeholder="Enter your email address" required>
+            <div class="email error"></div>
+          </div>
+          <div>
+            <div>Password</div>
+            <input type="password" class="input" name="password" placeholder="Enter your Password" required>
+            <div class="password error"></div>
+          </div>
+          <div>
+            <div>Confirm Password</div>
+            <input type="password" class="input" name="confirmPass" placeholder="Enter your Password again" required>
+            <div class="confirmPass error"></div>
+          </div>
+
+          <div>
+            <button class="btn">Sign-up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const passwordError = document.querySelector('.password.error')
+      const confirmPassError = document.querySelector('.confirmPass.error')
+
+
+      passwordError.textContent = ""
+      confirmPassError.textContent = ""
+      // Get Values
+      const firstName = form.firstName.value
+      const lastName = form.lastName.value
+      const gender = form.gender.value
+      const contactNo = form.contactNo.value
+      const address = form.address.value
+      const email = form.email.value
+      const password = form.password.value
+      const confirmPass = form.confirmPass.value
+
+      if (password !== confirmPass) {
+
+        passwordError.textContent = "Password does not match"
+        confirmPassError.textContent = "Password does not match"
+        return
+      }
+
+      try {
+        const results = await fetch('/signup', {
+          method: 'POST',
+          body: JSON.stringify({ firstName, lastName, gender, contactNo, address, email, password }),
+          headers: { 'Content-Type': 'application/json' }
+        })
+
+        const data = await results.json()
+        console.log(data)
+        if (data.errors) {
+          for (const key in data.errors) {
+            if (!document.querySelector(`.${key}.error`)) {
+              return
+            }
+            document.querySelector(`.${key}.error`).textContent = data.errors[key]
+          }
+        }
+
+        if (data.user) {
+          location.assign('/')
+        }
+
+      } catch (err) {
+        console.log(err)
+      }
+
+    })
+  </script>
+
+  <!--D2 nakalagay footer-->
+  <%- include('../partials/footer'); -%>
+
+</body>
+
+</html>

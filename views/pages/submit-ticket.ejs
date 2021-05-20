@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/mobile.css">
+  <title>Submit Ticket</title>
+</head>
+
+<body>
+  <div id="header">
+    <h2>Submit an Inquiry</h2>
+  </div>
+  <%- include('../partials/navlinks'); -%>
+    <div class="container">
+      <a class="btn" href="/support">Back</a>
+
+      <div class="card">
+        <div class="card-cont">
+          <div id="details">
+            <h2>Details</h2>
+          </div>
+
+          <form>
+            <div id="title">Choose a Request Type</div>
+            <select name="requestType" class="input" required>
+              <option disabled selected hidden value="0">-</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Symptoms">Symptoms</option>
+              <option value="Medication">Medication</option>
+              <option value="Consultation">Consultation</option>
+              <option value="Follow Up">Follow Up</option>
+              <option value="Others">Others</option>
+            </select>
+            <div class="requestType error"></div>
+
+            <div>
+              <div id="title">Subject</div>
+              <input type="text" name="subject" id="subject">
+              <div class="subject error"></div>
+            </div>
+            <div>
+              <div id="title">Body</div>
+              <textarea id="body" name="body" rows="4" cols="74" required></textarea>
+              <div class="body error"></div>
+            </div>
+
+            <div>
+              <label class="file">
+                <input type="file" id="file" name="file">
+                <span class="file-custom"></span>
+              </label>
+            </div>
+            <br>
+            <button class="btn">Submit</button>
+            <p>
+
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+
+      const form = document.querySelector('form')
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const requestTypeError = document.querySelector('.requestType.error')
+        requestTypeError.textContent = ""
+        // Get Values
+        const requestType = form.requestType.value
+        const subject = form.subject.value
+        const body = form.body.value
+        const file = form.file.files[0]
+
+        console.log(requestType, subject, file)
+
+
+        const formData = new FormData()
+
+        formData.append('requestType', requestType);
+        formData.append('subject', subject);
+        formData.append('body', body);
+
+        if (file) {
+          formData.append('file', file);
+        }
+
+
+        if (requestType === '0') {
+          requestTypeError.textContent = "Please select an option"
+          return
+        }
+
+
+        console.log(formData)
+        try {
+          const results = await fetch('/support/submit', {
+            method: 'POST',
+            body: formData,
+          })
+
+          const data = await results.json()
+          console.log(data)
+          if (data.errors) {
+            for (const key in data.errors) {
+              if (!document.querySelector(`.${key}.error`)) {
+                return
+              }
+              document.querySelector(`.${key}.error`).textContent = data.errors[key]
+            }
+          }
+
+          if (data.ticket) {
+            location.assign('/support/ticket/' + data.ticket)
+          }
+
+        } catch (err) {
+          console.log(err)
+        }
+      })
+    </script>
+
+     <!--D2 nakalagay footer-->
+     <%- include('../partials/footer'); -%>
+     
+</body>
+
+</html>

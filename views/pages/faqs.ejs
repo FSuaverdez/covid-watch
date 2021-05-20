@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/mobile.css">
+  <script src="faqs.js"></script>
+  <title>Home</title>
+</head>
+
+<body>
+  
+  <div id="header">
+    <h2>Web Clinic</h2>
+  </div>
+  <%- include('../partials/navlinks'); -%>
+  <div>
+    <img src="../images/bgFaqs.png" class="img-fluid" width="100%" height="auto">
+  </div>
+  
+  <br>
+  <br>
+    <div class="container">
+      <div id="faq-view">
+        <div id="faqs">
+          <button class="dropbtn pshort" onclick="showContentPrevention()">Prevention</button>
+          <div id="dropList" class="content">
+            <p id="questions" class="accordion">1. What is the proper way of washing hands to avoid COVID-19 transmission?</p>
+            <div class="panel">
+              <p id="answers">• Use warm water and soap and rub your hands for at least 20 seconds. Work the lather to your wrists, between your fingers, and under your fingernails. 
+                You can also use an antibacterial and antiviral soap. Use hand sanitizer when you cannot wash your hands properly. Rewash your hands several times a day, especially after touching anything, including your phone or laptop.</p>
+              <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html" target="_blank">CDC.gov</a></p>
+            </div>
+            <p id="questions" class="accordion">2. What is the best way to avoid COVID-19 transmission?</p>
+            <div class="panel">
+              <p id="answers">• Staying at home is the best way to avoid CoVid-19. Staying at home can assure yout that you will not have the disease unless 1 of your housemate already have the virus, 
+                but still it is the best way of protecting yourself from the virus because you will be away from a 
+                lot of people that we do not know if they are already infected or not.</p>
+                <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html" target="_blank">CDC.gov</a></p>
+            </div>
+            <p id="questions" class="accordion">3. Can face masks help slow the spread of the coronavirus (SARS-CoV-2) that causes COVID-19? </p>
+            <div class="panel">
+              <p id="answers">• Yes, face masks combined with other preventive measures, such as frequent hand-washing and social distancing, help slow the spread of the virus. </p>
+              <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html" target="_blank">CDC.gov</a></p>
+            </div>
+            <p id="questions" class="accordion">4. What is Social or Physical Distancing?</p>
+            <div class="panel">
+              <p id="answers">• Social distancing, also called "physical distancing," means keeping a safe space between yourself and other people who are not from your household. To practice social or physical distancing, stay at least 6 feet (about 2 arms'length) 
+                from other people who are not from your household in both indoor and outdoor spaces.</p>
+                <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html" target="_blank">CDC.gov</a></p>
+            </div>
+          </div>
+
+          <button class="dropbtn pshort" onclick="showContentSymptoms()">Symptoms</button>
+          <div id="dropList1" class="content">
+            <p id="questions" class="accordion">1. What are the common symptoms of Corona Virus Disease 2019? </p>
+            <div class="panel">
+              <p id="answers">• The most common symptoms of COVID-19 are fever,Dry cough, and sore throat.</p>
+              <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/faq.html#Symptoms-&-Emergency-Warning-Signs" target="_blank">CDC.gov</a></p>
+            </div>
+            <p id="questions" class="accordion">2. When will the symptoms of COVID-19 will likely appear? </p>
+            <div class="panel">
+              <p id="answers">• Symptoms may appear 2-14 days after exposure to the virus. If you have fever, cough, or other symptoms, you might have COVID-19.</p>
+              <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/faq.html#Symptoms-&-Emergency-Warning-Signs" target="_blank">CDC.gov</a></p>
+            </div>
+            <p id="questions" class="accordion">3. If I have cough or fever, does that mean that I am already infected of the virus? </p>
+            <div class="panel">
+              <p id="answers">• Having cough or fever does not necessarily mean that you already have COVID-19 but If you have any doubts or questions, 
+                it's best to call your doctor. An illness that seems like a fever can turn out to be flu or COVID-19.</p>
+                <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/faq.html#Symptoms-&-Emergency-Warning-Signs" target="_blank">CDC.gov</a></p>
+            </div>
+            
+          </div>
+
+          <button class="dropbtn btn1 pshort" onclick="showContentVaccination()">Vaccination</button>
+          <div id="dropList2" class="content">
+            <p id="questions" class="accordion">1. Is COVID-19 vaccine safe?</p>
+            <div class="panel">
+              <p id="answers">•COVID-19 vaccines have been tested in large, randomized controlled trials that include 
+                people of a broad age range, both sexes, different ethnicities, and those with known medical conditions. The vaccines have shown a high level of efficacy across all populations. Vaccines have been found to 
+                be safe and effective in people with various underlying medical 
+                conditions that are associated with increased risk of severe disease. These include high blood pressure; diabetes; asthma; pulmonary, liver or kidney disease; 
+                and chronic infections that are stable and controlled.</p>
+                <p id="answers" class="ref">Source: <a href="https://www.who.int/news-room/feature-stories/detail/safety-of-covid-19-vaccines" target="_blank">WHO.int</a></p>
+            </div>
+            <p id="questions" class="accordion">2. Can I choose what brand of Covid-19 vaccine will I get?</p>
+            <div class="panel">
+              <p id="answers">• Yes. All currently authorized and recommended COVID-19 vaccines are safe and effective, and CDC does not recommend one vaccine over another. 
+                The most important decision is to get a COVID-19 vaccination as soon as possible. 
+                Widespread vaccination is a critical tool to help stop the pandemic.</p>
+                <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/faq.html" target="_blank">CDC.gov</a></p>
+            </div>
+            <p id="questions" class="accordion">3. How do vaccines differ with each other?</p>
+            <div class="panel">
+              <p id="answers">• Vaccines differ in their composition and how they trigger the immune response to create antibodies.</p>
+              <p id="answers" class="ref">Source: <a href="https://doh.gov.ph/faqs/vaccines" target="_blank">doh.gov.ph</a></p>
+            </div>
+            <p id="questions" class="accordion">4. What are the possible side effects of the COVID-19 vaccines?</p>
+            <div class="panel">
+              <p id="answers">• The possible side effects of a vaccine include pain, redness, itchiness or swelling at the injection site (which may last a few hours); fever; feeling of
+                 weakness or fatigue; headache; dizziness; diarrhea; or nausea.</p>
+                 <p id="answers" class="ref">Source: <a href="https://doh.gov.ph/faqs/vaccines" target="_blank">doh.gov.ph</a></p>
+            </div>
+            <p id="questions" class="accordion">5. Can I purchase the vaccine or have the vaccination from private clinics or pharmacies?</p>
+            <div class="panel">
+              <p id="answers">• No, you cannot purchase COVID-19 vaccines from private clinics or pharmacies. At present, only the government is 
+                duly authorized to procure and administer vaccines.</p>
+                <p id="answers" class="ref">Source: <a href="https://doh.gov.ph/faqs/vaccines" target="_blank">doh.gov.ph</a></p>
+            </div>
+          </div>
+
+          <button class="dropbtn pshort" onclick="showContentOthers()">Others</button>
+          <div id="dropList3" class="content">
+            <p id="questions" class="accordion">1. Who are at higher risk for developing severe illness from COVID-19?</p>
+            <div class="panel">
+              <p id="answers">• People at risk are older adults, pregnant or recently pregnant people and people of all ages
+                that have underlying medical conditions.
+              </p>
+              <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/faq.html#Symptoms-&-Emergency-Warning-Signs" target="_blank">CDC.gov</a></p>
+            </div>
+            <p id="questions" class="accordion">2. Can I get COVID-19 from my pets or other animals? </p>
+            <div class="panel">
+              <p id="answers">• Based on the available information to date, the risk of animals spreading COVID-19 to people is considered to be low.
+                However, since animals can spread other diseases to people, it’s always a good idea to practice healthy habits around pets and other animals, 
+                such as washing your hands and maintaining good hygiene. 
+              </p>
+              <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/faq.html#Symptoms-&-Emergency-Warning-Signs" target="_blank">CDC.gov</a></p>
+            </div>
+            <p id="questions" class="accordion">3. Can I get COVID-19 from food like restaurants take-out, canned goods, refrigerated foods
+              and other packed foods including water?
+            </p>
+            <div class="panel">
+              <p id="answers">• Currently there is no evidence that people can get COVID-19 by eating or handling food.
+                It may be possible that people can get COVID-19 by touching a surface or object, such as a food package or dining ware that has the virus on it and then touching their own mouth, nose, or possibly their eyes. However, 
+                this is not thought to be the main way the virus spreads.  </p>
+                <p id="answers" class="ref">Source: <a href="https://www.cdc.gov/coronavirus/2019-ncov/faq.html#Symptoms-&-Emergency-Warning-Signs" target="_blank">CDC.gov</a></p>
+            </div>
+          </div>
+            
+        </div>
+      </div>
+    </div>
+    <!--D2 nakalagay footer-->
+    <%- include('../partials/footer'); -%>
+    
+
+</body>
+<script>
+  document.getElementById("dropList").classList.toggle("show");
+  function showContentPrevention() {
+    document.getElementById("dropList").classList.toggle("show");
+    document.getElementById("dropList1").classList.remove("show");
+    document.getElementById("dropList2").classList.remove("show");
+    document.getElementById("dropList3").classList.remove("show");
+  }
+  function showContentSymptoms() {
+    document.getElementById("dropList1").classList.toggle("show");
+    document.getElementById("dropList").classList.remove("show");
+    document.getElementById("dropList2").classList.remove("show");
+    document.getElementById("dropList3").classList.remove("show");
+
+  }
+  function showContentVaccination() {
+    document.getElementById("dropList2").classList.toggle("show");
+    document.getElementById("dropList1").classList.remove("show");
+    document.getElementById("dropList").classList.remove("show");
+    document.getElementById("dropList3").classList.remove("show");
+
+  }
+  function showContentOthers() {
+    document.getElementById("dropList3").classList.toggle("show");
+    document.getElementById("dropList1").classList.remove("show");
+    document.getElementById("dropList2").classList.remove("show");
+    document.getElementById("dropList").classList.remove("show");
+
+  }
+
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/mobile.css">
+  <title>Service Ticket</title>
+</head>
+
+<body>
+  <div id="header">
+    <h2>Comhub Service Status</h2>
+  </div>
+  <%- include('../../partials/navlinks'); -%>
+    <div class="container">
+      <a class="btn" href="/support">Back</a>
+
+      <div class="ticket-container">
+        <a href="/admin/users/admin" class="btn">All Admin Users</a>
+        <a href="/admin/users/user" class="btn">All Normal users</a>
+        <a href="/admin/users/all" class="btn">All Users</a>
+
+
+        <table id="users">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Admin</th>
+            <th>Change Role</th>
+          </tr>
+          <% users.forEach(user=> { %>
+            <tr>
+              <td>
+                <%= user.firstName %>
+                  <%= user.lastName %>
+              </td>
+              <td>
+                <%= user.email %>
+              </td>
+              <td>
+                <%= user.isAdmin %>
+              </td>
+              <td>
+                <form action="/admin/users/<%= user._id %>" method="post">
+                  <button class="btn">
+                    <%= user.isAdmin ? "Make User" : "Make Admin" %>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+
+
+        </table>
+      </div>
+
+    </div>
+
+</body>
+
+</html>

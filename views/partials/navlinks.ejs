@@ -1,0 +1,43 @@
+<div class="nav">
+
+  <div class="container">
+    <div class="nav-links">
+      <div>
+        <% if (path.includes('/support')) { %>
+          <a href="/">Home</a>
+          <a href="/support/submit">Send Inquiry</a>
+          <a href="/support/status">Service Status</a>
+          <% } else {%>
+            <a href="/">Home</a>
+            <a href="/faq">FAQs</a>
+            <a href="/support">Support</a>
+            <% } %>
+      </div>
+
+      <div>
+
+
+        <% if(user && user.isAdmin) { %>
+          <div class="dropdown">
+            <p>Admin</p>
+            <div class="dropdown-content">
+              <p><a href="/admin/tickets/open">Tickets</a></p>
+              <p><a href="/admin/users/all">Users</a></p>
+            </div>
+          </div>
+          <a href="/logout">Log Out</a>
+          <% } else if (user) { %>
+            <span>
+              Welcome <%= user.email %>
+            </span>
+            <a href="/logout">Log Out</a>
+
+            <% } else { %>
+              <a href="/login">Log In</a>
+              <a href="/signup">Sign Up</a>
+              <% } %>
+      </div>
+    </div>
+
+  </div>
+</div>

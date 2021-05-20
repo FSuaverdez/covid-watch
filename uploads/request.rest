@@ -1,0 +1,38 @@
+
+POST http://localhost:3000/login 
+Content-Type: application/json
+
+{
+    "email": "luigi@google.com",
+    "password": "test123"
+}
+
+###
+POST http://localhost:3000/signup 
+Content-Type: application/json
+
+{
+   "email":"yoshi@google.com",
+   "password":"123456",
+   "lastName":"Frannz",
+   "firstName":"Suaverdez",
+   "contactNo":"09277718892",
+   "address":"Biwas,tanza",
+   "gender":"Male",
+   "isAdmin":true
+}
+
+###
+
+POST http://localhost:3000/support/submit 
+Content-Type: application/json
+
+{
+  "subject": "Test",
+  "requestType":1,
+  "userId": "ahjfjkashjkdf"
+}
+
+###
+
+POST http://localhost:3000/support/postmessage
