@@ -26,7 +26,7 @@
 
           <form>
             <div id="title">Choose a Request Type</div>
-            <select name="requestType" class="input" required>
+            <select name="requestType" class="input" id="grp2" onchange="grp1()" required>
               <option disabled selected hidden value="0">-</option>
               <option value="General Inquiry">General Inquiry</option>
               <option value="Symptoms">Symptoms</option>
@@ -39,9 +39,14 @@
 
             <div>
               <div id="title">Subject</div>
-              <input type="text" name="subject" id="subject">
-              <div class="subject error"></div>
+                <div id="output">
+                <select class="input">
+                  <option>-</option>
+                </select>
+                <div class="subject error"></div>
+              </div>
             </div>
+
             <div>
               <div id="title">Body</div>
               <textarea id="body" name="body" rows="4" cols="74" required></textarea>
@@ -65,7 +70,29 @@
     </div>
     <script>
 
-      const form = document.querySelector('form')
+      //grp function
+      function grp1(){
+        var a=document.getElementById('grp2').value;
+        if(a==="General Inquiry"){
+          var array=["Available Hospitals", "Medical Assistance", "Consultation"];
+        }
+        else if(a==="Symptoms"){
+          var array=["Fever", "Headache", "Muscle_Pain"];
+        }
+        else{
+          var array=[];
+        }
+
+        var string="";
+        for(i=0;i<array.length;i++){
+          string=string+"<option value='"+array[i]+"'>"+array[i]+"</option>";
+        }
+        string="<select name='subject' class='input'>"+string+"</select>";
+        document.getElementById('output').innerHTML=string;
+        //console.log(string);
+      }
+
+      const form = document.querySelector('form');
       form.addEventListener('submit', async (e) => {
         e.preventDefault()
         const requestTypeError = document.querySelector('.requestType.error')
@@ -121,7 +148,10 @@
         } catch (err) {
           console.log(err)
         }
-      })
+      });
+
+      
+
     </script>
 
      <!--D2 nakalagay footer-->
