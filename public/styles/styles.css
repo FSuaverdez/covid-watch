@@ -162,7 +162,7 @@ a {
 .input {
   padding: 10px;
   height: 40px;
-  width: 98%;
+  width: 100%;
 }
 .btn {
   margin-top: 10px;
@@ -404,18 +404,6 @@ button {
 .panel p {
   font-size: 18px;
 }
-
-.footer {
-  background-color: #e33e25;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 3;
-  position: fixed;
-}
 .signup {
   height: 100vh;
   margin: 50px auto;
@@ -428,4 +416,49 @@ button {
 #answers.ref a{
   color: white;
   text-decoration: underline;
+}
+#checkbox{
+  margin-top: 10px;
+  color: #333;
+}
+#terms{
+  color: #e33e25;
+  cursor: pointer;
+}
+#agreement{
+  height: 17px;
+  width: 17px;
+}
+#term-title{
+  text-align: center;
+  margin: 20px;
+}
+#term-container{
+  padding: 20px;
+  border: #e33e25 solid 2px;
+  margin:20px;
+}
+#term-content{
+  margin-bottom: 30px;
+}
+.topic-title{
+  font-weight: bold;
+}
+.term-text{
+  text-indent: 30px;
+  margin: 10px;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.footer {
+  background-color: #e33e25;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 3;
+  position: fixed;
 }

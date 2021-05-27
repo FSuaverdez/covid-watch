@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/mobile.css">
+
+
   <title>Sign up</title>
 </head>
 
@@ -35,7 +37,7 @@
           <div>
             <div>Gender</div>
             <select name="gender" class="input" required>
-              <option disabled selected hidden>Choose gender</option>
+              <option disabled selected hidden value="0">Choose gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Others">Others</option>
@@ -48,8 +50,30 @@
             <div class="contactNo error"></div>
           </div>
           <div>
-            <div>Address</div>
-            <input type="text" class="input" name="address" placeholder="Enter your Address" required>
+            <div>Province:</div>
+            <select required class="input" name="province" id="province">
+              <option disabled selected hidden value="0">Choose Province:</option>
+            </select>
+            <div class="province error"></div>
+          </div>
+          <div>
+            <div>City:</div>
+            <select required class="input" name="city" id="city">
+              <option disabled selected hidden value="0">Choose City:</option>
+            </select>
+            <div class="city error"></div>
+          </div>
+          <div>
+            <div>Barangay:</div>
+            <select required class="input" name="barangay" id="barangay">
+              <option disabled selected hidden value="0">Choose Barangay:</option>
+            </select>
+            <div class="barangay error"></div>
+          </div>
+          <div>
+            <div>House:</div>
+            <input type="text" required class="input" name="house" id="house"
+              placeholder="House #, Block #, Street Name">
             <div class="address error"></div>
           </div>
           <div>
@@ -68,6 +92,10 @@
             <div class="confirmPass error"></div>
           </div>
 
+          <div id="checkbox">
+            <input type="checkbox" id="agreement" name="agreement" value="agreement" required> I have read and accepted
+            the <a href="/agreement" target="_blank" id="terms">Terms and Conditions</a>
+          </div>
           <div>
             <button class="btn">Sign-up</button>
           </div>
@@ -75,7 +103,80 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+  <script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js"></script>
+  <script>
+    var my_handlers = {
 
+
+
+      fill_cities: function () {
+
+        var province_code = $(this).val();
+        $('#city').ph_locations('fetch_list', [{ "province_code": province_code }]);
+        setTimeout(() => {
+          $("#city").html($("#city option").sort(function (a, b) {
+            return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
+          }))
+          $('#city').append(`<option disabled selected hidden value="${0}">${'Choose City:'} </option>`);
+        }, 1000);
+      },
+
+
+      fill_barangays: function () {
+
+        var city_code = $(this).val();
+        $('#barangay').ph_locations('fetch_list', [{ "city_code": city_code }]);
+        setTimeout(() => {
+          $("#barangay").html($("#barangay option").sort(function (a, b) {
+            return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
+          }))
+          $('#barangay').append(`<option disabled selected hidden value="${0}">${'Choose Barangay:'} </option>`);
+        }, 1000);
+      }
+    };
+
+    $(async function () {
+      $('#province').on('change', my_handlers.fill_cities);
+      $('#city').on('change', my_handlers.fill_barangays);
+
+      $('#region').ph_locations({ 'location_type': 'regions' });
+      $('#province').ph_locations({ 'location_type': 'provinces' });
+      $('#city').ph_locations({ 'location_type': 'cities' });
+      $('#barangay').ph_locations({ 'location_type': 'barangays' });
+
+      $('#province').ph_locations('fetch_list');
+
+
+      setTimeout(() => {
+        $("#province").html($("#province option").sort(function (a, b) {
+          return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
+        }))
+        $('#province').append(`<option disabled selected hidden value="${0}">${'Choose Province:'} </option>`);
+      }, 1000);
+
+    });
+
+
+
+    function sortSelect(selElem) {
+      var tmpAry = new Array();
+      for (var i = 0; i < selElem.options.length; i++) {
+        tmpAry[i] = new Array();
+        tmpAry[i][0] = selElem.options[i].text;
+        tmpAry[i][1] = selElem.options[i].value;
+      }
+      tmpAry.sort();
+      while (selElem.options.length > 0) {
+        selElem.options[0] = null;
+      }
+      for (var i = 0; i < tmpAry.length; i++) {
+        var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+        selElem.options[i] = op;
+      }
+      return;
+    }
+  </script>
   <script>
     const form = document.querySelector('form')
 
@@ -83,24 +184,60 @@
       e.preventDefault()
       const passwordError = document.querySelector('.password.error')
       const confirmPassError = document.querySelector('.confirmPass.error')
+      const provinceError = document.querySelector('.province.error')
+      const cityError = document.querySelector('.city.error')
+      const barangayError = document.querySelector('.barangay.error')
+      const genderError = document.querySelector('.gender.error')
 
 
       passwordError.textContent = ""
       confirmPassError.textContent = ""
+      provinceError.textContent = ""
+      cityError.textContent = ""
+      barangayError.textContent = ""
+      genderError.textContent = ""
       // Get Values
       const firstName = form.firstName.value
       const lastName = form.lastName.value
       const gender = form.gender.value
       const contactNo = form.contactNo.value
-      const address = form.address.value
+      const address = {
+        province: $("#province option:selected").text(),
+        city: $("#city option:selected").text(),
+        barangay: $("#barangay option:selected").text(),
+        house: form.house.value
+      }
       const email = form.email.value
       const password = form.password.value
       const confirmPass = form.confirmPass.value
+
+      console.log(address)
 
       if (password !== confirmPass) {
 
         passwordError.textContent = "Password does not match"
         confirmPassError.textContent = "Password does not match"
+        return
+      }
+
+      if (form.province.value == 0) {
+
+        provinceError.textContent = "Please select a Province"
+        return
+      }
+      if (form.city.value == 0) {
+
+        cityError.textContent = "Please select a City"
+        return
+      }
+      if (form.barangay.value == 0) {
+
+        barangayError.textContent = "Please select a Barangay"
+        return
+      }
+      if (form.gender.value == 0) {
+
+        genderError.textContent = "Please select your Gender"
         return
       }
 

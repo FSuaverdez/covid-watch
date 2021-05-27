@@ -11,4 +11,9 @@ router.get('/support', requireAuth, (req, res) =>
   res.render('pages/support', { rmWhitespace: true })
 )
 
+router.get('/agreement', (req, res) => {
+  res.render('pages/agreement', { rmWhitespace: true })
+})
+
+
 module.exports = router
