@@ -39,7 +39,7 @@
 
             <div>
               <div id="title">Subject</div>
-                <div id="output">
+              <div id="output">
                 <select class="input">
                   <option>-</option>
                 </select>
@@ -71,24 +71,24 @@
     <script>
 
       //grp function
-      function grp1(){
-        var a=document.getElementById('grp2').value;
-        if(a==="General Inquiry"){
-          var array=["Available Hospitals", "Medical Assistance", "Consultation"];
+      function grp1() {
+        var a = document.getElementById('grp2').value;
+        if (a === "General Inquiry") {
+          var array = ["Available Hospitals", "Medical Assistance", "Consultation"];
         }
-        else if(a==="Symptoms"){
-          var array=["Fever", "Headache", "Muscle_Pain"];
+        else if (a === "Symptoms") {
+          var array = ["Fever", "Headache", "Muscle_Pain"];
         }
-        else{
-          var array=[];
+        else {
+          var array = [];
         }
 
-        var string="";
-        for(i=0;i<array.length;i++){
-          string=string+"<option value='"+array[i]+"'>"+array[i]+"</option>";
+        var string = "";
+        for (i = 0; i < array.length; i++) {
+          string = string + "<option value='" + array[i] + "'>" + array[i] + "</option>";
         }
-        string="<select name='subject' class='input'>"+string+"</select>";
-        document.getElementById('output').innerHTML=string;
+        string = "<select name='subject' class='input'>" + string + "</select>";
+        document.getElementById('output').innerHTML = string;
         //console.log(string);
       }
 
@@ -150,13 +150,13 @@
         }
       });
 
-      
+
 
     </script>
 
-     <!--D2 nakalagay footer-->
-     <%- include('../partials/footer'); -%>
-     
+    <!--D2 nakalagay footer-->
+    <%- include('../partials/footer'); -%>
+
 </body>
 
 </html>

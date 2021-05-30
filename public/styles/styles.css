@@ -408,43 +408,42 @@ button {
   height: 100vh;
   margin: 50px auto;
 }
-#answers.ref{
+#answers.ref {
   font-size: 15px;
   font-weight: bold;
-
 }
-#answers.ref a{
+#answers.ref a {
   color: white;
   text-decoration: underline;
 }
-#checkbox{
+#checkbox {
   margin-top: 10px;
   color: #333;
 }
-#terms{
+#terms {
   color: #e33e25;
   cursor: pointer;
 }
-#agreement{
+#agreement {
   height: 17px;
   width: 17px;
 }
-#term-title{
+#term-title {
   text-align: center;
   margin: 20px;
 }
-#term-container{
+#term-container {
   padding: 20px;
   border: #e33e25 solid 2px;
-  margin:20px;
+  margin: 20px;
 }
-#term-content{
+#term-content {
   margin-bottom: 30px;
 }
-.topic-title{
+.topic-title {
   font-weight: bold;
 }
-.term-text{
+.term-text {
   text-indent: 30px;
   margin: 10px;
   font-size: 18px;
@@ -461,4 +460,28 @@ button {
   width: 100%;
   z-index: 3;
   position: fixed;
+}
+
+.cases-card {
+  margin: 20px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 40%;
+  padding: 10px;
+}
+
+.cases-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.cases-card h3 {
+  margin: 10px auto;
+}
+
+span.red {
+  color: #cc311a;
+}
+
+.case-group {
+  display: flex;
+  gap: 20px;
 }

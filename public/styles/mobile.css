@@ -12,4 +12,17 @@
   .card-cont {
     width: 80%;
   }
+
+  .home {
+    width: 90%;
+    margin: auto;
+  }
+  .cases-card {
+    width: 100%;
+  }
+  .case-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }

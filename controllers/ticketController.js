@@ -121,13 +121,13 @@ const sendEmailNotification = (ticket, body, email) => {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'customer.service.comphub@gmail.com',
-      pass: 'ljdljqfhfrnjifpj',
+      user: 'ph.covid.watch@gmail.com',
+      pass: 'guaczesnyctgagza',
     },
   })
 
   let mailOptions = {
-    from: 'customer.service.comphub@gmail.com',
+    from: 'ph.covid.watch@gmail.com',
     to: email,
     subject: `New Ticket Reply!`,
     text: `New Reply\n\n${body}`,

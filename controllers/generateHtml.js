@@ -148,7 +148,7 @@ module.exports.generateHtml = (ticket, body) => {
       <tr style="vertical-align: top;" valign="top">
         <td style="word-break: break-word; vertical-align: top;" valign="top">
           <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:#FFFFFF"><![endif]-->
-          <div style="background-color:#00b2ff;">
+          <div style="background-color:#cc311a;">
             <div class="block-grid"
               style="min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
               <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
@@ -167,7 +167,7 @@ module.exports.generateHtml = (ticket, body) => {
                             valign="top" width="100%">
                             <h1
                               style="color:#555555;direction:ltr;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:28px;font-weight:normal;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;margin-bottom:0;">
-                              <strong><span style="color: #ffffff;">Comhub Service Status</span></strong>
+                              <strong><span style="color: #ffffff;">COVID-WATCH Inquiry Status</span></strong>
                             </h1>
                           </td>
                         </tr>
@@ -178,7 +178,7 @@ module.exports.generateHtml = (ticket, body) => {
               </div>
             </div>
           </div>
-          <div style="background-color:#00b2ff;">
+          <div style="background-color:#cc311a;">
             <div class="block-grid"
               style="min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
               <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
@@ -196,7 +196,7 @@ module.exports.generateHtml = (ticket, body) => {
                             valign="top" width="100%">
                             <h1
                               style="color:#555555;direction:ltr;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:28px;font-weight:normal;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;margin-bottom:0;">
-                              <strong><span style="color: #ffffff;">New Ticket Reply!</span></strong>
+                              <strong><span style="color: #ffffff;">New Reply!</span></strong>
                             </h1>
                           </td>
                         </tr>
@@ -265,7 +265,7 @@ module.exports.generateHtml = (ticket, body) => {
                       <div align="center" class="button-container"
                         style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
                         <a href="http://comphub-support.azurewebsites.net/support/ticket/${ticket._id}"
-                          style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: #3AAEE0; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; width: auto; width: auto; border-top: 1px solid #3AAEE0; border-right: 1px solid #3AAEE0; border-bottom: 1px solid #3AAEE0; border-left: 1px solid #3AAEE0; padding-top: 5px; padding-bottom: 5px; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;"
+                          style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: #cc311a; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; width: auto; width: auto; border-top: 1px solid #cc311a; border-right: 1px solid #cc311a; border-bottom: 1px solid #cc311a; border-left: 1px solid #cc311a; padding-top: 5px; padding-bottom: 5px; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;"
                           target="_blank"><span
                             style="padding-left:20px;padding-right:20px;font-size:16px;display:inline-block;letter-spacing:undefined;"><span
                               style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;">View

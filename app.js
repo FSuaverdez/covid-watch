@@ -10,6 +10,7 @@ const dotenv = require('dotenv')
 const { requireAuth, checkUser } = require('./middleware/authMiddleware')
 const { checkPath } = require('./middleware/basicMiddleware')
 const fileUpload = require('express-fileupload')
+const axios = require('axios')
 
 const app = express()
 dotenv.config()
@@ -41,5 +42,26 @@ mongoose
 // routes
 app.get('*', checkUser, checkPath)
 app.get('*', checkUser, checkPath)
-app.get('/', (req, res) => res.render('index', { rmWhitespace: true }))
+app.get('/', async (req, res) => {
+  try {
+    const data = await axios.get(
+      'https://api.covid19api.com/live/country/ph/status/confirmed'
+    )
+    const cases = data.data
+    const latestCase = cases[cases.length - 1]
+
+    latestCase.Confirmed = numberWithCommas(latestCase.Confirmed)
+    res.render('index', {
+      latestCase,
+      cases,
+      rmWhitespace: true,
+    })
+  } catch (error) {
+    console.log(error)
+  }
+})
 app.use(authRoutes, basicRoutes, ticketRoutes, fileRoutes, adminRoutes)
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}

@@ -30,10 +30,8 @@ const userSchema = new mongoose.Schema(
       validate: [isMobilePhone, 'Please enter a valid phone number'],
     },
     address: {
-      province: String,
-      city: String,
-      barangay: String,
-      house: String,
+      type: String,
+      required: [true, 'Please enter your Address'],
     },
     gender: {
       type: String,
