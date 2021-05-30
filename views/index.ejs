@@ -21,141 +21,139 @@
     <div class="home">
       <img src="images/bg1.png" alt="BG1" class="img-fluid" width="100%" height="auto">
 
-      <div class="card">
-        <div class="container col-lg-6">
+      <div class="container col-lg-6">
 
-          <div>
-            <% if (cases) { %>
-              <h1>COVID-19 Cases</h1>
-              <div class="case-group">
-                <div class="cases-card">
-                  <h2>
-                    <%- latestCase.Country %>
-                  </h2>
-                  <div class="cases-info">
-                    <h3>
-                      Confirmed Cases : <span class="red">
-                        <%- latestCase.Confirmed %>
-                      </span>
-                    </h3>
-                    <h3>
-                      Active Cases : <span class="red">
-                        <%- latestCase.Active %>
-                      </span>
-                    </h3>
-                    <h3>
-                      Deaths : <span class="red">
-                        <%- latestCase.Deaths %>
-                      </span>
-                    </h3>
-                    <h3>
-                      Recovered Cases : <span class="red">
-                        <%- latestCase.Recovered %>
-                      </span>
-                    </h3>
-                  </div>
+        <div>
+          <% if (cases) { %>
+            <h1>COVID-19 Cases</h1>
+            <div class="case-group">
+              <div class="cases-card">
+                <h2>
+                  <%- latestCase.Country %>
+                </h2>
+                <div class="cases-info">
+                  <h3>
+                    Confirmed Cases : <span class="red">
+                      <%- latestCase.Confirmed %>
+                    </span>
+                  </h3>
+                  <h3>
+                    Active Cases : <span class="red">
+                      <%- latestCase.Active %>
+                    </span>
+                  </h3>
+                  <h3>
+                    Deaths : <span class="red">
+                      <%- latestCase.Deaths %>
+                    </span>
+                  </h3>
+                  <h3>
+                    Recovered Cases : <span class="red">
+                      <%- latestCase.Recovered %>
+                    </span>
+                  </h3>
+                </div>
 
-                </div>
-                <div class="chart-container" style=" height: 100%; width: 500px;">
-                  <canvas id="myChart"></canvas>
-                </div>
               </div>
+              <div class="chart-container">
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
 
 
-              <% } %>
+            <% } %>
 
-                <h2>Overview</h2>
-                <br>
-                <h4><b>Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered
-                    coronavirus.</b>
-                </h4>
-                <br>
-                <h4><b>Most people infected with the COVID-19 virus will experience mild to moderate respiratory
-                    illness
-                    and recover without requiring special treatment. Older people, and those with underlying medical
-                    problems like cardiovascular disease, diabetes,
-                    chronic respiratory disease, and cancer are more likely to develop serious illness.</b></h4>
-                <br>
-                <h4><b>The best way to prevent and slow down transmission is to be well informed about the COVID-19
-                    virus,
-                    the disease it causes and how it spreads.
-                    Protect yourself and others from infection by washing your hands or using an alcohol based rub
-                    frequently and not touching your face. </b></h4>
-                <br>
-                <img src="images/bg2.png" alt="BG2" class="img-fluid" width="100%" height="auto">
-                <br>
-                <br>
-                <h4><b> The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose
-                    when
-                    an
-                    infected person coughs or sneezes, so it’s important that you also practice respiratory etiquette
-                    (for
-                    example, by coughing into a flexed elbow). </b></h4>
-                <br>
-                <hr>
-          </div>
-
-          <div>
-            <br>
-            <h2>What to do to keep yourself and others safe from COVID-19</h2>
-            <br>
-          </div>
-
-          <div>
-            <ul>
-              <li><b>Maintain at least a 1-metre distance between yourself and others</b> to reduce your risk of
-                infection when they cough, sneeze or speak.
-                Maintain an even greater distance between yourself and others when indoors. The further away, the
-                better.</li>
+              <h2>Overview</h2>
               <br>
-              <li><b>Make wearing a mask a normal part of being around other people. The appropriate use, storage
-                  and
-                  cleaning or disposal are essential to make masks as effective as possible.</b></li>
-            </ul>
-            <br>
-            <hr>
-          </div>
-
-
-          <div>
-            <br>
-            <h2>Here are the Basics of How to wear a Mask</h2>
-            <br>
-          </div>
-
-          <div>
-            <ul>
-              <li><b>Clean your hands before you put your mask on, as well as before and after you take it off, and
-                  after you touch it at any time.</b></li>
+              <h4><b>Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered
+                  coronavirus.</b>
+              </h4>
               <br>
-              <li><b>Make sure it covers both your nose, mouth and chin.</b></li>
+              <h4><b>Most people infected with the COVID-19 virus will experience mild to moderate respiratory
+                  illness
+                  and recover without requiring special treatment. Older people, and those with underlying medical
+                  problems like cardiovascular disease, diabetes,
+                  chronic respiratory disease, and cancer are more likely to develop serious illness.</b></h4>
               <br>
-              <li><b>When you take off a mask, store it in a clean plastic bag, and every day either wash it if it’s
-                  a
-                  fabric mask, or dispose of a medical mask in a trash bin.</b></li>
+              <h4><b>The best way to prevent and slow down transmission is to be well informed about the COVID-19
+                  virus,
+                  the disease it causes and how it spreads.
+                  Protect yourself and others from infection by washing your hands or using an alcohol based rub
+                  frequently and not touching your face. </b></h4>
               <br>
-              <li><b>Don’t use masks with valves.</b></li>
-            </ul>
-            <br>
-            <br>
-            <hr>
-          </div>
-
-          <div>
-            <br>
-            <h2>- Medical Hotlines for Assitance -</h2>
-            <br>
-          </div>
-
-          <ul><i class="fas fa-hospital-alt"><b> Department of Health</b></i>
-            <li> <b> 02-894 (02-894-26843)</b> </li>
-            <li> <b> (632) 8651-7800</b> </li>
-            <li> <b> +63919-1601418</b> </li>
-            <br>
-            <br>
-          </ul>
-
+              <img src="images/bg2.png" alt="BG2" class="img-fluid" width="100%" height="auto">
+              <br>
+              <br>
+              <h4><b> The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose
+                  when
+                  an
+                  infected person coughs or sneezes, so it’s important that you also practice respiratory etiquette
+                  (for
+                  example, by coughing into a flexed elbow). </b></h4>
+              <br>
+              <hr>
         </div>
+
+        <div>
+          <br>
+          <h2>What to do to keep yourself and others safe from COVID-19</h2>
+          <br>
+        </div>
+
+        <div>
+          <ul>
+            <li><b>Maintain at least a 1-metre distance between yourself and others</b> to reduce your risk of
+              infection when they cough, sneeze or speak.
+              Maintain an even greater distance between yourself and others when indoors. The further away, the
+              better.</li>
+            <br>
+            <li><b>Make wearing a mask a normal part of being around other people. The appropriate use, storage
+                and
+                cleaning or disposal are essential to make masks as effective as possible.</b></li>
+          </ul>
+          <br>
+          <hr>
+        </div>
+
+
+        <div>
+          <br>
+          <h2>Here are the Basics of How to wear a Mask</h2>
+          <br>
+        </div>
+
+        <div>
+          <ul>
+            <li><b>Clean your hands before you put your mask on, as well as before and after you take it off, and
+                after you touch it at any time.</b></li>
+            <br>
+            <li><b>Make sure it covers both your nose, mouth and chin.</b></li>
+            <br>
+            <li><b>When you take off a mask, store it in a clean plastic bag, and every day either wash it if it’s
+                a
+                fabric mask, or dispose of a medical mask in a trash bin.</b></li>
+            <br>
+            <li><b>Don’t use masks with valves.</b></li>
+          </ul>
+          <br>
+          <br>
+          <hr>
+        </div>
+
+        <div>
+          <br>
+          <h2>- Medical Hotlines for Assitance -</h2>
+          <br>
+        </div>
+
+        <ul><i class="fas fa-hospital-alt"><b> Department of Health</b></i>
+          <li> <b> 02-894 (02-894-26843)</b> </li>
+          <li> <b> (632) 8651-7800</b> </li>
+          <li> <b> +63919-1601418</b> </li>
+          <br>
+          <br>
+        </ul>
+
       </div>
       <br>
       <!--D2 nakalagay footer-->
