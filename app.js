@@ -51,6 +51,9 @@ app.get('/', async (req, res) => {
     const latestCase = cases[cases.length - 1]
 
     latestCase.Confirmed = numberWithCommas(latestCase.Confirmed)
+    latestCase.Active = numberWithCommas(latestCase.Active)
+    latestCase.Deaths = numberWithCommas(latestCase.Deaths)
+    latestCase.Recovered = numberWithCommas(latestCase.Recovered)
     res.render('index', {
       latestCase,
       cases,
