@@ -50,6 +50,11 @@
             <div class="contactNo error"></div>
           </div>
           <div>
+            <div>Contact number</div>
+            <input type="date" class="input" max="2010-1-1" name="birthday" required>
+            <div class="birthday error"></div>
+          </div>
+          <div>
             <div>Address:</div>
             <input type="text" required class="input" name="adress" id="address"
               placeholder="House #, Block #, Street Name">
@@ -107,8 +112,9 @@
       const email = form.email.value
       const password = form.password.value
       const confirmPass = form.confirmPass.value
+      const birthday = form.birthday.value
 
-
+      console.log(birthday)
       if (password !== confirmPass) {
 
         passwordError.textContent = "Password does not match"
@@ -126,7 +132,7 @@
       try {
         const results = await fetch('/signup', {
           method: 'POST',
-          body: JSON.stringify({ firstName, lastName, gender, contactNo, address, email, password }),
+          body: JSON.stringify({ firstName, lastName, gender, contactNo, address, email, password, birthday }),
           headers: { 'Content-Type': 'application/json' }
         })
 

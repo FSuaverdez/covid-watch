@@ -42,6 +42,10 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Please specify User Role'],
       default: false,
     },
+    birthday: {
+      type: Date,
+      required: [true, 'Please select your birth date'],
+    },
   },
   {
     timestaps: true,

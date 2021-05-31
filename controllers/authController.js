@@ -70,6 +70,7 @@ module.exports.signup_post = async (req, res) => {
     address,
     gender,
     isAdmin,
+    birthday,
   } = req.body
 
   try {
@@ -84,6 +85,7 @@ module.exports.signup_post = async (req, res) => {
       contactNo,
       address,
       gender,
+      birthday,
       isAdmin: false,
     })
 
