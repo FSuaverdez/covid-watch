@@ -77,7 +77,7 @@
           var array = ["Available Hospitals", "Medical Assistance", "Check up"];
         }
         else if (a === "Symptoms") {
-          var array = ["Fever", "Headache", "Muscle_Pain"];
+          var array = ["Fever", "Headache", "Muscle_Pain","Cough","Sore_Throat"];
         }
         else if (a === "Medication") {
           var array = ["For Fever", "For Chest Pain", "For Sore Knee", "For Sore Throat"];
@@ -101,7 +101,6 @@
         }
         string = "<select name='subject' class='input'>" + string + "</select>";
         document.getElementById('output').innerHTML = string;
-        //console.log(string);
       }
 
       const form = document.querySelector('form');
