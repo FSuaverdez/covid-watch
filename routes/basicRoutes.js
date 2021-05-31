@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const { dashboard_get } = require('../controllers/dashboardController')
 const { requireAuth } = require('../middleware/authMiddleware')
 
 const router = Router()
@@ -15,8 +16,6 @@ router.get('/agreement', (req, res) => {
   res.render('pages/agreement', { rmWhitespace: true })
 })
 
-router.get('/admin/dashboard', requireAuth, (req, res) => {
-  res.render('pages/dashboard', { rmWhitespace: true })
-})
+router.get('/admin/dashboard', requireAuth, dashboard_get)
 
 module.exports = router
