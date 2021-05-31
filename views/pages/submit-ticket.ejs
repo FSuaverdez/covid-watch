@@ -74,10 +74,22 @@
       function grp1() {
         var a = document.getElementById('grp2').value;
         if (a === "General Inquiry") {
-          var array = ["Available Hospitals", "Medical Assistance", "Consultation"];
+          var array = ["Available Hospitals", "Medical Assistance", "Check up"];
         }
         else if (a === "Symptoms") {
           var array = ["Fever", "Headache", "Muscle_Pain"];
+        }
+        else if (a === "Medication") {
+          var array = ["For Fever", "For Chest Pain", "For Sore Knee", "For Sore Throat"];
+        }
+        else if (a === "Consultation") {
+          var array = ["Pregnancy", "Signs of Illness", "Allergic Reaction"];
+        }
+        else if (a === "Follow Up") {
+          var array = ["Medical Exam", "Lab Results", "Monitoring"];
+        }
+        else if (a === "Others") {
+          var array = ["Diet Advice", "Stress Advice", "Mental Health Advice"];
         }
         else {
           var array = [];
