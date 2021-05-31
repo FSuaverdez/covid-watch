@@ -15,5 +15,8 @@ router.get('/agreement', (req, res) => {
   res.render('pages/agreement', { rmWhitespace: true })
 })
 
+router.get('/admin/dashboard', requireAuth, (req, res) => {
+  res.render('pages/dashboard', { rmWhitespace: true })
+})
 
 module.exports = router
