@@ -28,4 +28,18 @@
   .chart-container {
     width: 100%;
   }
+
+  .main-container {
+    flex-direction: column;
+  }
+
+  .ticket-report,
+  .user-report {
+    flex-direction: column;
+  }
+
+  .bar-chart {
+    width: 60%;
+    margin: auto;
+  }
 }

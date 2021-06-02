@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/mobile.css">
   <title>Service Ticket</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -16,9 +17,75 @@
   </div>
   <%- include('../partials/navlinks'); -%>
     <div class="container">
-  
+      <h1 class="red-center">Ticket Report</h1>
+      <div class="ticket-report">
+        <div class="ticket-count">
+          <h2>All Tickets</h2>
+          <h3>
+            <%= ticketReport.length %>
+          </h3>
+        </div>
+        <div class="ticket-status">
+          <h2>Open Tickets</h2>
+          <h3>
+            <%= ticketReport.open %>
+          </h3>
 
+
+        </div>
+        <div class="ticket-status">
+          <h2>Closed Tickets</h2>
+          <h3>
+            <%= ticketReport.closed %>
+          </h3>
+        </div>
+
+        <div class="ticket-message">
+          <h1>
+            <%= ticketReport.message %>
+          </h1>
+          <a href="/admin/tickets/open" class="btn">Answer Tickets</a>
+        </div>
+      </div>
+      <h1 class="red-center">User Report</h1>
+      <div class="user-report">
+        <div class="box">
+          <h2>All Users</h2>
+          <h3>
+            <%= userReport.length %>
+          </h3>
+        </div>
+        <div class="bar-chart">
+          <canvas id="bar-chart"></canvas>
+        </div>
+      </div>
     </div>
+    </div>
+
+    <script>
+      new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+          labels: ["Male", "Female", "Others"],
+          datasets: [
+            {
+              label: "User Gender",
+              backgroundColor: ["#3e95cd", "#c45850", "#3cba9f"],
+              data: ['<%= userReport.male %>', '<%= userReport.female %>', '<%= userReport.others %>']
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'User Gender'
+          },
+          responsive: true,
+          maintainAspectRatio: true
+        }
+      });
+    </script>
     <%- include('../partials/footer'); -%>
 </body>
 

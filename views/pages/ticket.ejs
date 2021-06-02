@@ -17,85 +17,124 @@
   </div>
   <%- include('../partials/navlinks'); -%>
 
-    <div class="container">
-      <a class="btn" href="/support/status">Back</a>
+    <div class="main-container">
 
-      <div class="ticket-container">
-        <div class="ticket-card">
-          <div class="ticket-title">
-            <h2>
-              <%= ticket.subject %>
-            </h2>
-            <span class="status <%= ticket.isOpen? " open" :"closed" %> ">
-              <%= ticket.isOpen? "Open" :"Closed" %>
-            </span>
+
+
+      <div class="sub-container">
+        <a class="btn" href="/support/status">Back</a>
+
+        <div class="ticket-container">
+          <div class="ticket-card">
+            <div class="ticket-title">
+              <h2>
+                <%= ticket.subject %>
+              </h2>
+              <span class="status <%= ticket.isOpen? " open" :"closed" %> ">
+                <%= ticket.isOpen? "Open" :"Closed" %>
+              </span>
+
+            </div>
+            <h5>
+              by <%= ticket.senderName %>
+            </h5>
+            <h6>
+              <%=new Date( new Date(ticket.createdAt).setHours( new Date(ticket.createdAt).getHours() + 8
+                )).toLocaleString() %>
+            </h6>
+            <p>
+              <%= ticket.body %>
+            </p>
+            <% if (ticket.files.length>0) { %>
+              <div class="attachments">
+                <h6>Attachments</h6>
+
+                <% ticket.files.forEach(files=> { %>
+                  <a target="_blank" class="attachment" href="/attachments/<%= files.fileName %>">
+                    <%= files.fileName %>
+                  </a>
+                  <% }) %>
+              </div>
+              <% } %>
 
           </div>
-          <h5>
-            by <%= ticket.senderName %>
-          </h5>
-          <h6>
-            <%=new Date( new Date(ticket.createdAt).setHours( new Date(ticket.createdAt).getHours() + 8
-              )).toLocaleString() %>
-          </h6>
-          <p>
-            <%= ticket.body %>
-          </p>
-          <% if (ticket.files.length>0) { %>
-            <div class="attachments">
-              <h6>Attachments</h6>
-
-              <% ticket.files.forEach(files=> { %>
-                <a target="_blank" class="attachment" href="/attachments/<%= files.fileName %>">
-                  <%= files.fileName %>
-                </a>
-                <% }) %>
-            </div>
-            <% } %>
-
         </div>
+
+        <% if (ticket.messages.length>0) { %>
+          <div class="ticket-container">
+            <h2 class='reply'>Replies</h2>
+            <% ticket.messages.forEach(message=> { %>
+
+              <div class="ticket">
+                <h3 class="ticket-title">
+                  <%= message.senderName %>
+                </h3>
+                <h6>
+                  <%= new Date( new Date(message.createdAt).setHours( new Date(message.createdAt).getHours() + 8
+                    )).toLocaleString() %>
+                </h6>
+                <p>
+                  <%= message.body %>
+                </p>
+              </div>
+              <% }) %>
+          </div>
+
+          <% } %>
+
+            <% if (user && user.isAdmin && ticket.isOpen) { %>
+              <form action="/support/ticket/<%= ticket._id %>/close" method="post">
+                <button class="btn">Close Ticket</button>
+              </form>
+              <% } %>
+
+                <% if (ticket.isOpen) { %>
+                  <form action="/support/ticket/<%= ticket._id %>" method="post">
+                    <div class="card">
+                      <div class="card-cont">
+                        <div>Reply</div>
+                        <textarea id="body" name="body" rows="4" cols="74" required></textarea>
+                        <button class="btn">Submit</button>
+                      </div>
+                    </div>
+                  </form>
+                  <% } %>
+
       </div>
 
-      <% if (ticket.messages.length>0) { %>
-        <div class="ticket-container">
-          <h2 class='reply'>Replies</h2>
-          <% ticket.messages.forEach(message=> { %>
-
-            <div class="ticket">
-              <h3 class="ticket-title">
-                <%= message.senderName %>
-              </h3>
-              <h6>
-                <%= new Date( new Date(message.createdAt).setHours( new Date(message.createdAt).getHours() + 8
-                  )).toLocaleString() %>
-              </h6>
-              <p>
-                <%= message.body %>
-              </p>
-            </div>
-            <% }) %>
+      <div class="user-info">
+        <h2>Sender Info</h2>
+        <div>
+          <h6>Name: <span class="info">
+              <%= sender.firstName %>
+                <%= sender.lastName %>
+            </span></h6>
+        </div>
+        <div>
+          <% function getAge(dateString) { var today=new Date(); var birthDate=new Date(dateString); var
+            age=today.getFullYear() - birthDate.getFullYear(); var m=today.getMonth() - birthDate.getMonth(); if (m < 0
+            || (m===0 && today.getDate() < birthDate.getDate())) { age--; } return age; } %>
+            <h6>Age: <span class="info">
+                <%= getAge(sender.birthday) %>
+              </span></h6>
+        </div>
+        <div>
+          <h6>Email: <span class="info">
+              <%= sender.email %>
+            </span></h6>
+        </div>
+        <div>
+          <h6>Contact #: <span class="info">
+              <%= sender.contactNo %>
+            </span></h6>
+        </div>
+        <div>
+          <h6>Address: <span class="info">
+              <%= sender.address %>
+            </span></h6>
         </div>
 
-        <% } %>
-
-          <% if (user && user.isAdmin && ticket.isOpen) { %>
-            <form action="/support/ticket/<%= ticket._id %>/close" method="post">
-              <button class="btn">Close Ticket</button>
-            </form>
-            <% } %>
-
-              <% if (ticket.isOpen) { %>
-                <form action="/support/ticket/<%= ticket._id %>" method="post">
-                  <div class="card">
-                    <div class="card-cont">
-                      <div>Reply</div>
-                      <textarea id="body" name="body" rows="4" cols="74" required></textarea>
-                      <button class="btn">Submit</button>
-                    </div>
-                  </div>
-                </form>
-                <% } %>
-
+      </div>
     </div>
 
 </body>

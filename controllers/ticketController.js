@@ -56,8 +56,9 @@ module.exports.submit_post = async (req, res) => {
 module.exports.ticket_get = async (req, res) => {
   try {
     const ticket = await Ticket.findById(req.params.id)
-
-    res.render('pages/ticket', { ticket, rmWhitespace: true })
+    const sender = await User.findById(ticket.userId)
+    console.log(sender)
+    res.render('pages/ticket', { ticket, sender, rmWhitespace: true })
   } catch (err) {
     const errors = handleErrors(err)
     res.status(400).json({ errors })
