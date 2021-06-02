@@ -29,7 +29,7 @@
             <select name="requestType" class="input" id="grp2" onchange="grp1()" required>
               <option disabled selected hidden value="0">-</option>
               <option value="General Inquiry">General Inquiry</option>
-              <option value="Symptoms">Symptoms</option>
+              <option value="Symptoms">Symptoms of Covid-19</option>
               <option value="Medication">Medication</option>
               <option value="Consultation">Consultation</option>
               <option value="Follow Up">Follow Up</option>
@@ -74,22 +74,22 @@
       function grp1() {
         var a = document.getElementById('grp2').value;
         if (a === "General Inquiry") {
-          var array = ["Available Hospitals", "Medical Assistance", "Check up"];
+          var array = ["Available Hospitals", "Medical Assistance", "Swab Test for Covid-19", "Vaccine for Covid-19", "Face-to-Face Consultation", "Request for Pediatrician"];
         }
         else if (a === "Symptoms") {
-          var array = ["Fever", "Headache", "Muscle_Pain","Cough","Sore_Throat"];
+          var array = ["Congestion or runny nose", "Cough", "Diarrhea", "Difficulty of breathing", "Fatigue", "Fever", "Headache", "Loss of taste or smell", "Muscle Aches", "Nausea", "Sore Throat", "Vomiting"];
         }
         else if (a === "Medication") {
-          var array = ["For Fever", "For Chest Pain", "For Sore Knee", "For Sore Throat"];
+          var array = ["For Fever", "For Chest Pain", "For Sore Knee", "For Sore Throat", "For Cough", "For Muscle Pain", "For Arm Injury"];
         }
         else if (a === "Consultation") {
-          var array = ["Pregnancy", "Signs of Illness", "Allergic Reaction"];
+          var array = ["General Checkup", "Pregnancy", "Signs of Illness", "Allergic Reaction", "Update Medicines"];
         }
         else if (a === "Follow Up") {
-          var array = ["Medical Exam", "Lab Results", "Monitoring"];
+          var array = ["Medical Exam", "Lab Results", "Monitoring for Covid-19", "X-ray Results"];
         }
         else if (a === "Others") {
-          var array = ["Diet Advice", "Stress Advice", "Mental Health Advice"];
+          var array = ["Diet Advice", "Stress Advice", "Mental Health Advice", "Self-Isolation Advice", "Covid-19 Related Advice"];
         }
         else {
           var array = [];
