@@ -24,7 +24,7 @@
             <h2>Details</h2>
           </div>
 
-          <form>
+          <form method="get">
             <div id="title">Choose a Request Type</div>
             <select name="requestType" class="input" id="grp2" onchange="grp1()" required>
               <option disabled selected hidden value="0">-</option>
@@ -96,11 +96,23 @@
         }
 
         var string = "";
-        for (i = 0; i < array.length; i++) {
-          string = string + "<option value='" + array[i] + "'>" + array[i] + "</option>";
+        if (a !== "Symptoms"){
+          for (i = 0; i < array.length; i++) {
+            string = string + "<option value='" + array[i] + "'>" + array[i] + "</option>";
+          }
+          string = "<select name='subject' class='input'>" + string + "</select>";
         }
-        string = "<select name='subject' class='input'>" + string + "</select>";
+
+        //add string to produce all the checkboxes
+        else {
+          for (i = 0; i < array.length; i++) {
+            string = "<input type='checkbox' name='subject' value='" + array[i] + "'>" + "<label for='" + array[i] + "'>" + array[i] + "</label><br>";
+          }
+        }
+
+       
         document.getElementById('output').innerHTML = string;
+        console.log(string);
       }
 
       const form = document.querySelector('form');
