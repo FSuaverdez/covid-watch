@@ -38,8 +38,8 @@
             <div class="requestType error"></div>
 
             <div>
-              <div id="title">Subject</div>
               <div id="output">
+                <div id="title">Subject</div>
                 <select class="input">
                   <option>-</option>
                 </select>
@@ -100,7 +100,7 @@
           for (i = 0; i < array.length; i++) {
             string = string + "<option value='" + array[i] + "'>" + array[i] + "</option>";
           }
-          string = "<select name='subject' class='input'>" + string + "</select>";
+          string = "<div id='title'>Subject</div><select name='subject' class='input'>" + string + "</select>";
         }
 
         //add string to produce all the checkboxes
