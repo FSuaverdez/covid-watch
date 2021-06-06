@@ -19,42 +19,29 @@
     <div class="container">
       <h1 class="red-center">Ticket Report</h1>
       <div class="ticket-report">
-        <div class="ticket-count">
-          <h2>All Tickets</h2>
-          <h3>
-            <%= ticketReport.length %>
-          </h3>
-        </div>
-        <div class="ticket-status">
-          <h2>Open Tickets</h2>
-          <h3>
-            <%= ticketReport.open %>
-          </h3>
 
 
-        </div>
-        <div class="ticket-status">
-          <h2>Closed Tickets</h2>
-          <h3>
-            <%= ticketReport.closed %>
-          </h3>
+        <div class="bar-chart">
+          <canvas id="bar-chart-ticket"></canvas>
         </div>
 
-        <div class="ticket-message">
-          <h1>
+
+
+
+        <div class="box">
+          <h2>
             <%= ticketReport.message %>
-          </h1>
-          <a href="/admin/tickets/open" class="btn">Answer Tickets</a>
+          </h2>
+          <a href=" /admin/tickets/open" class="btn">Answer Tickets</a>
         </div>
       </div>
 
       <div class="ticket-graph">
         <div class="bar-chart">
-          <h2 class="red-center">All Request Types</h2>
           <canvas id="bar-chart-request"></canvas>
         </div>
-        <div class="possible">
-          <h2 class="red-center">Possible COVID-19 Case</h2>
+        <div class="box">
+          <h2>Possible COVID-19 Case</h2>
           <h1>
             <%= ticketReport.possibleCovid %>
           </h1>
@@ -64,14 +51,14 @@
 
       <h1 class="red-center">User Report</h1>
       <div class="user-report">
+        <div class="bar-chart">
+          <canvas id="bar-chart-gender"></canvas>
+        </div>
         <div class="box">
           <h2>All Users</h2>
           <h3>
             <%= userReport.length %>
           </h3>
-        </div>
-        <div class="bar-chart">
-          <canvas id="bar-chart-gender"></canvas>
         </div>
       </div>
     </div>
@@ -84,17 +71,31 @@
           labels: ["Male", "Female", "Others"],
           datasets: [
             {
-              label: "Male",
-              backgroundColor: ["#3e95cd"],
-              data: ['<%= userReport.male %>']
-            }, {
-              label: "Female",
-              backgroundColor: ["#c45850"],
-              data: ['<%= userReport.female %>']
-            }, {
-              label: "Others",
-              backgroundColor: ["#3cba9f"],
-              data: ['<%= userReport.others %>']
+              label: "Gender",
+              backgroundColor: ["#3e95cd", "#c45850", "#3cba9f"],
+              data: ['<%= userReport.male %>', '<%= userReport.female %>', '<%= userReport.others %>']
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'User Gender'
+          },
+          responsive: true,
+          maintainAspectRatio: true
+        }
+      });
+      new Chart(document.getElementById("bar-chart-ticket"), {
+        type: 'bar',
+        data: {
+          labels: ["Open", "Closed"],
+          datasets: [
+            {
+              label: "Tickets",
+              backgroundColor: ["#3e95cd", "#c45850"],
+              data: ['<%= ticketReport.open %>', '<%= ticketReport.closed %>']
             }
           ]
         },
@@ -116,33 +117,18 @@
           labels: ["General Inquiry", "Symptoms", "Medication", "Consultation", "Follow Up", "Others"],
           datasets: [
             {
-              label: "General Inquiry",
-              backgroundColor: ["#3e95cd"],
-              data: ['<%= ticketReport.requestType.general %>']
-            }, {
-              label: "Symptoms",
-              backgroundColor: ["#c45850"],
-              data: ['<%= ticketReport.requestType.symptoms%>']
-            }, {
-              label: "Medication",
-              backgroundColor: ["#3cba9f"],
-              data: ['<%= ticketReport.requestType.medication %>']
-            }, {
-              label: "Consultation",
-              backgroundColor: ["#3b5a9f"],
-              data: ['<%= ticketReport.requestType.consultation %>']
-            }, {
-              label: "Follow Up",
-              backgroundColor: ["#3cb53f", "#6ff211"],
-              data: ['<%= ticketReport.requestType.follow %>']
-            }, {
-              label: "Others",
-              backgroundColor: ["#6ff211"],
-              data: ['<%= ticketReport.requestType.others %>']
+              label: "Ticket Request Type",
+              backgroundColor: ["#3e95cd", "#c45850", "#3cba9f", "#3b5a9f", "#3cb53f", "#6ff211"],
+              data: ['<%= ticketReport.requestType.general %>', '<%= ticketReport.requestType.symptoms%>', '<%= ticketReport.requestType.medication %>', '<%= ticketReport.requestType.consultation %>', '<%= ticketReport.requestType.follow %>', '<%= ticketReport.requestType.others %>']
             }
           ]
         },
         options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
           legend: { display: false },
           title: {
             display: true,

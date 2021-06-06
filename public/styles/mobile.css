@@ -42,4 +42,8 @@
     width: 60%;
     margin: auto;
   }
+
+  .ticket-graph {
+    flex-direction: column;
+  }
 }

@@ -519,7 +519,12 @@ span.red {
 
 .ticket-report {
   display: flex;
+  justify-content: space-around;
   margin-top: 40px;
+}
+
+.ticket-report h2 {
+  margin: 0;
 }
 
 .ticket-message {
@@ -535,7 +540,7 @@ span.red {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
   padding: 20px 10px;
-  height: fit-content;
+  margin-bottom: 50px;
 }
 
 .user-info h6 {
@@ -566,7 +571,6 @@ span.red {
 }
 
 .bar-chart {
-  margin: 0 100px;
   width: 40%;
 }
 
@@ -579,14 +583,27 @@ span.red {
 .box {
   border: 1px solid #cc311a;
   text-align: center;
-  margin: 5px;
-  padding: 50px;
+  height: 228px;
+  width: 456px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #cc311a;
+}
+
+.box h2 {
+  font-size: 24px;
+}
+.box h3 {
+  font-size: 28px;
 }
 
 .user-report {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-around;
+  margin-top: 50px;
   padding-bottom: 200px;
 }
 
@@ -602,13 +619,20 @@ input[type='checkbox'] {
 
 .ticket-graph {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 100px;
 }
 
 .possible {
   text-align: center;
-  margin-top: 40px;
   padding: 20px;
   border: 1px solid #cc311a;
   height: 100%;
   justify-self: center;
+}
+
+canvas {
+  border: 1px solid #cc311a;
+  padding: 10px;
 }
