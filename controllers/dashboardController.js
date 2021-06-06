@@ -33,7 +33,9 @@ const generateTicketReport = (tickets) => {
   const open = tickets.filter((t) => t.isOpen).length
   const closed = tickets.filter((t) => !t.isOpen).length
   const message = generateTicketMessage(open)
-  const possibleCovid = tickets.filter((t) => t.symptoms.length > 0).length
+  const possibleCovid = tickets.filter(
+    (t) => t.symptoms.length > 0 && t.isOpen
+  ).length
   const requestType = {
     general: tickets.filter((t) => t.requestType == 'General Inquiry').length,
     symptoms: tickets.filter((t) => t.requestType == 'Symptoms').length,
