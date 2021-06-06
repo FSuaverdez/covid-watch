@@ -51,6 +51,7 @@ const ticketSchema = mongoose.Schema(
       required: [true, 'boolean is required'],
       default: true,
     },
+    symptoms: [{ type: String }],
     files: [imageSchema],
     messages: [messageSchema],
   },

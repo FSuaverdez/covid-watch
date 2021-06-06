@@ -102,44 +102,62 @@
 
       </div>
 
-      <div class="user-info">
-        <h2>Sender Info</h2>
-        <div>
-          <h6>Name: <span class="info">
-              <%= sender.firstName %>
-                <%= sender.lastName %>
-            </span></h6>
-        </div>
-        <div>
-          <% function getAge(dateString) { var today=new Date(); var birthDate=new Date(dateString); var
-            age=today.getFullYear() - birthDate.getFullYear(); var m=today.getMonth() - birthDate.getMonth(); if (m < 0
-            || (m===0 && today.getDate() < birthDate.getDate())) { age--; } return age; } %>
-            <h6>Age: <span class="info">
-                <%= getAge(sender.birthday) %>
+      <div>
+        <div class="user-info">
+          <h2>Sender Info</h2>
+          <div>
+            <h6>Name: <span class="info">
+                <%= sender.firstName %>
+                  <%= sender.lastName %>
               </span></h6>
+          </div>
+          <div>
+            <% function getAge(dateString) { var today=new Date(); var birthDate=new Date(dateString); var
+              age=today.getFullYear() - birthDate.getFullYear(); var m=today.getMonth() - birthDate.getMonth(); if (m <
+              0 || (m===0 && today.getDate() < birthDate.getDate())) { age--; } return age; } %>
+              <h6>Age: <span class="info">
+                  <%= getAge(sender.birthday) %>
+                </span></h6>
+          </div>
+          <div>
+            <h6>Gender: <span class="info">
+                <%= sender.gender %>
+              </span></h6>
+          </div>
+          <div>
+            <h6>Email: <span class="info">
+                <%= sender.email %>
+              </span></h6>
+          </div>
+          <div>
+            <h6>Contact #: <span class="info">
+                <%= sender.contactNo %>
+              </span></h6>
+          </div>
+          <div>
+            <h6>Address: <span class="info">
+                <%= sender.address %>
+              </span></h6>
+          </div>
+
         </div>
-        <div>
-          <h6>Gender: <span class="info">
-              <%= sender.gender %>
-            </span></h6>
-        </div>
-        <div>
-          <h6>Email: <span class="info">
-              <%= sender.email %>
-            </span></h6>
-        </div>
-        <div>
-          <h6>Contact #: <span class="info">
-              <%= sender.contactNo %>
-            </span></h6>
-        </div>
-        <div>
-          <h6>Address: <span class="info">
-              <%= sender.address %>
-            </span></h6>
-        </div>
+        <% if (ticket.symptoms) { %>
+          <div class="user-info">
+            <h2>Sender Symptoms</h2>
+            <% ticket.symptoms.forEach(e=> { %>
+              <div>
+                <span class="info">
+                  <%= e %>
+                </span></h6>
+              </div>
+              <% }) %>
+          </div>
+          <% } %>
+
 
       </div>
+
+
     </div>
 
 </body>

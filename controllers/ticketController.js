@@ -24,11 +24,9 @@ module.exports.submit_get = (req, res) => {
 }
 
 module.exports.submit_post = async (req, res) => {
-  console.log(req.body)
-  const { requestType, subject, body } = req.body
   const user = res.locals.user
   try {
-    const { subject, requestType, userId } = req.body
+    const { subject, requestType, userId, symptoms, body } = req.body
     const ticket = await Ticket.create({
       senderName: `${user.firstName} ${user.lastName}`,
       subject,
@@ -36,6 +34,16 @@ module.exports.submit_post = async (req, res) => {
       userId: user._id,
       body,
     })
+
+    if (symptoms) {
+      const array = symptoms.split(',')
+      array.forEach((s) => {
+        ticket.symptoms.push(s)
+      })
+      await ticket.save()
+    }
+
+    console.log(ticket)
 
     const image = req.files?.file
     if (image) {

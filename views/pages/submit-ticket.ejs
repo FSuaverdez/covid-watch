@@ -29,7 +29,7 @@
             <select name="requestType" class="input" id="grp2" onchange="grp1()" required>
               <option disabled selected hidden value="0">-</option>
               <option value="General Inquiry">General Inquiry</option>
-              <option value="Symptoms">Symptoms of Covid-19</option>
+              <option value="Symptoms">I have symptoms of Covid-19</option>
               <option value="Medication">Medication</option>
               <option value="Consultation">Consultation</option>
               <option value="Follow Up">Follow Up</option>
@@ -99,7 +99,7 @@
         if (a === "Symptoms") {
           string = "<select hidden name='subject' class='input'><option value='Symptoms of Covid-19'></option></select>"
           for (i = 0; i < array.length; i++) {
-            string = string + "<input type='checkbox' name='symptoms' value='" + array[i] + "'>" + "<label for='" + array[i] + "'>" + array[i] + "</label><br>";
+            string = string + "<input type='checkbox' id='" + array[i] + "' name='mycheckboxes' value='" + array[i] + "'> " + "<label class='label-check' for='" + array[i] + "'>" + array[i] + "</label><br>";
           }
         }
         else {
@@ -108,7 +108,7 @@
           }
           string = "<div id='title'>Subject</div><select name='subject' class='input'>" + string + "</select>";
         }
-        
+
         document.getElementById('output').innerHTML = string;
         console.log(string);
       }
@@ -120,18 +120,21 @@
         requestTypeError.textContent = ""
         // Get Values
         const requestType = form.requestType.value
-        const subject = form.subject.value
+        const subject = requestType === 'Symptoms' ? 'I have symptoms of Covid-19' : form.subject.value
         const body = form.body.value
         const file = form.file.files[0]
-
-        console.log(requestType, subject, file)
-
+        const checkedBoxes = document.querySelectorAll('input[name=mycheckboxes]:checked');
+        const symptoms = []
+        checkedBoxes.forEach(c => {
+          symptoms.push(c.value)
+        })
 
         const formData = new FormData()
 
         formData.append('requestType', requestType);
         formData.append('subject', subject);
         formData.append('body', body);
+        formData.append('symptoms', symptoms);
 
         if (file) {
           formData.append('file', file);
@@ -144,7 +147,6 @@
         }
 
 
-        console.log(formData)
         try {
           const results = await fetch('/support/submit', {
             method: 'POST',

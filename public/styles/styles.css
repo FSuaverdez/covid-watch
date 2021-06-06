@@ -533,7 +533,7 @@ span.red {
 
 .user-info {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 25%;
+  width: 100%;
   padding: 20px 10px;
   height: fit-content;
 }
@@ -587,4 +587,13 @@ span.red {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+input[type='checkbox'] {
+  margin: 5px 0;
+  display: inline-block;
+}
+
+.label-check {
+  margin: 7px 0;
+  font-size: 12px;
 }
