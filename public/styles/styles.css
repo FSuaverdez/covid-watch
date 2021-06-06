@@ -587,7 +587,9 @@ span.red {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 200px;
 }
+
 input[type='checkbox'] {
   margin: 5px 0;
   display: inline-block;
@@ -596,4 +598,17 @@ input[type='checkbox'] {
 .label-check {
   margin: 7px 0;
   font-size: 12px;
+}
+
+.ticket-graph {
+  display: flex;
+}
+
+.possible {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  border: 1px solid #cc311a;
+  height: 100%;
+  justify-self: center;
 }

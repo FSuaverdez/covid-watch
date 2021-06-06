@@ -47,6 +47,21 @@
           <a href="/admin/tickets/open" class="btn">Answer Tickets</a>
         </div>
       </div>
+
+      <div class="ticket-graph">
+        <div class="bar-chart">
+          <h2 class="red-center">All Request Types</h2>
+          <canvas id="bar-chart-request"></canvas>
+        </div>
+        <div class="possible">
+          <h2 class="red-center">Possible COVID-19 Case</h2>
+          <h1>
+            <%= ticketReport.possibleCovid %>
+          </h1>
+        </div>
+      </div>
+
+
       <h1 class="red-center">User Report</h1>
       <div class="user-report">
         <div class="box">
@@ -56,22 +71,30 @@
           </h3>
         </div>
         <div class="bar-chart">
-          <canvas id="bar-chart"></canvas>
+          <canvas id="bar-chart-gender"></canvas>
         </div>
       </div>
     </div>
     </div>
 
     <script>
-      new Chart(document.getElementById("bar-chart"), {
+      new Chart(document.getElementById("bar-chart-gender"), {
         type: 'bar',
         data: {
           labels: ["Male", "Female", "Others"],
           datasets: [
             {
-              label: "User Gender",
-              backgroundColor: ["#3e95cd", "#c45850", "#3cba9f"],
-              data: ['<%= userReport.male %>', '<%= userReport.female %>', '<%= userReport.others %>']
+              label: "Male",
+              backgroundColor: ["#3e95cd"],
+              data: ['<%= userReport.male %>']
+            }, {
+              label: "Female",
+              backgroundColor: ["#c45850"],
+              data: ['<%= userReport.female %>']
+            }, {
+              label: "Others",
+              backgroundColor: ["#3cba9f"],
+              data: ['<%= userReport.others %>']
             }
           ]
         },
@@ -85,6 +108,51 @@
           maintainAspectRatio: true
         }
       });
+
+
+      new Chart(document.getElementById("bar-chart-request"), {
+        type: 'bar',
+        data: {
+          labels: ["General Inquiry", "Symptoms", "Medication", "Consultation", "Follow Up", "Others"],
+          datasets: [
+            {
+              label: "General Inquiry",
+              backgroundColor: ["#3e95cd"],
+              data: ['<%= ticketReport.requestType.general %>']
+            }, {
+              label: "Symptoms",
+              backgroundColor: ["#c45850"],
+              data: ['<%= ticketReport.requestType.symptoms%>']
+            }, {
+              label: "Medication",
+              backgroundColor: ["#3cba9f"],
+              data: ['<%= ticketReport.requestType.medication %>']
+            }, {
+              label: "Consultation",
+              backgroundColor: ["#3b5a9f"],
+              data: ['<%= ticketReport.requestType.consultation %>']
+            }, {
+              label: "Follow Up",
+              backgroundColor: ["#3cb53f", "#6ff211"],
+              data: ['<%= ticketReport.requestType.follow %>']
+            }, {
+              label: "Others",
+              backgroundColor: ["#6ff211"],
+              data: ['<%= ticketReport.requestType.others %>']
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+          },
+          responsive: true,
+          maintainAspectRatio: true
+        }
+      });
+
+
     </script>
     <%- include('../partials/footer'); -%>
 </body>
