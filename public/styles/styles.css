@@ -519,6 +519,7 @@ span.red {
 
 .ticket-report {
   display: flex;
+  align-items: center;
   justify-content: space-around;
   margin-top: 40px;
 }
@@ -571,7 +572,7 @@ span.red {
 }
 
 .bar-chart {
-  width: 40%;
+  width: 50%;
 }
 
 .red-center {
@@ -583,8 +584,8 @@ span.red {
 .box {
   border: 1px solid #cc311a;
   text-align: center;
-  height: 228px;
-  width: 456px;
+  height: 285px;
+  width: 370px;
   display: flex;
   flex-direction: column;
   align-items: center;
