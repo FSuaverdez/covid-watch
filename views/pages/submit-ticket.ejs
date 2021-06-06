@@ -96,21 +96,19 @@
         }
 
         var string = "";
-        if (a !== "Symptoms"){
+        if (a === "Symptoms") {
+          string = "<select hidden name='subject' class='input'><option value='Symptoms of Covid-19'></option></select>"
+          for (i = 0; i < array.length; i++) {
+            string = string + "<input type='checkbox' name='symptoms' value='" + array[i] + "'>" + "<label for='" + array[i] + "'>" + array[i] + "</label><br>";
+          }
+        }
+        else {
           for (i = 0; i < array.length; i++) {
             string = string + "<option value='" + array[i] + "'>" + array[i] + "</option>";
           }
           string = "<div id='title'>Subject</div><select name='subject' class='input'>" + string + "</select>";
         }
-
-        //add string to produce all the checkboxes
-        else {
-          for (i = 0; i < array.length; i++) {
-            string = "<input type='checkbox' name='subject' value='" + array[i] + "'>" + "<label for='" + array[i] + "'>" + array[i] + "</label><br>";
-          }
-        }
-
-       
+        
         document.getElementById('output').innerHTML = string;
         console.log(string);
       }
