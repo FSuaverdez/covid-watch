@@ -8,7 +8,7 @@ module.exports.dashboard_get = async (req, res) => {
     const ticketReport = generateTicketReport(tickets)
     const userReport = generateUserReport(users)
 
-    console.log(ticketReport, userReport)
+    // console.log(ticketReport, userReport)
     res.render('pages/dashboard', {
       ticketReport,
       userReport,
@@ -33,9 +33,33 @@ const generateTicketReport = (tickets) => {
   const open = tickets.filter((t) => t.isOpen).length
   const closed = tickets.filter((t) => !t.isOpen).length
   const message = generateTicketMessage(open)
-  const possibleCovid = tickets.filter(
-    (t) => t.symptoms.length > 0 && t.isOpen
-  ).length
+  const possibleCovid = tickets.filter((t) => {
+    let points = 0
+
+    t.symptoms.forEach((s) => {
+      if (['Difficulty of breathing'].includes(s)) {
+        points += 5
+      }
+      if (['Cough', 'Fatigue', 'Fever'].includes(s)) {
+        points += 3
+      }
+      if (
+        [
+          'Congestion or runny nose',
+          'Diarrhea',
+          'Headache',
+          'Loss of taste or smell',
+          'Muscle Aches',
+          'Nausea',
+          'Sore Throat',
+          'Vomiting',
+        ].includes(s)
+      ) {
+        points += 2
+      }
+    })
+    return points > 10 && t.isOpen
+  }).length
   const requestType = {
     general: tickets.filter((t) => t.requestType == 'General Inquiry').length,
     symptoms: tickets.filter((t) => t.requestType == 'Symptoms').length,

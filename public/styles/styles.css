@@ -637,3 +637,7 @@ canvas {
   border: 1px solid #cc311a;
   padding: 10px;
 }
+
+#output {
+  margin-bottom: 30px;
+}

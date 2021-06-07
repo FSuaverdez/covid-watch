@@ -22,6 +22,7 @@
         <a href="/admin/tickets/open" class="btn">All Open Tickets</a>
         <a href="/admin/tickets/close" class="btn">All Closed Tickets</a>
         <a href="/admin/tickets/all" class="btn">All Tickets</a>
+        <a href="/admin/tickets/possible-covid" class="btn">All Tickets (Possible COVID-19 Case)</a>
         <% tickets.forEach(ticket=> { %>
           <div class="ticket">
             <a href="/support/ticket/<%= ticket._id %> ">
