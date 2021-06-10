@@ -1,17 +1,35 @@
 const User = require('../models/User')
 const Ticket = require('../models/Ticket')
 
+const handleErrors = (err) => {
+  console.log(err.message, err.code)
+
+  let errors = {}
+
+  if (err.message.includes('ticket validation failed')) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message
+    })
+    console.log(errors)
+  }
+
+  return errors
+}
+
 module.exports.dashboard_get = async (req, res) => {
   try {
     const tickets = await Ticket.find()
     const users = await User.find()
     const ticketReport = generateTicketReport(tickets)
     const userReport = generateUserReport(users)
+    const possibleUsers = await User.find({ _id: ticketReport.possibleId })
+    const possibleReport = generatePossibleReport(possibleUsers)
 
     // console.log(ticketReport, userReport)
     res.render('pages/dashboard', {
       ticketReport,
       userReport,
+      possibleReport,
       rmWhitespace: true,
     })
   } catch (err) {
@@ -59,7 +77,9 @@ const generateTicketReport = (tickets) => {
       }
     })
     return points > 10 && t.isOpen
-  }).length
+  })
+
+  const possibleId = possibleCovid.map((p) => p.userId)
   const requestType = {
     general: tickets.filter((t) => t.requestType == 'General Inquiry').length,
     symptoms: tickets.filter((t) => t.requestType == 'Symptoms').length,
@@ -75,7 +95,8 @@ const generateTicketReport = (tickets) => {
     closed,
     message,
     requestType,
-    possibleCovid,
+    possibleCovid: possibleCovid.length,
+    possibleId,
   }
 }
 const generateUserReport = (users) => {
@@ -89,4 +110,31 @@ const generateUserReport = (users) => {
     female,
     others,
   }
+}
+
+const generatePossibleReport = (users) => {
+  const male = users.filter((u) => u.gender == 'Male').length
+  const female = users.filter((u) => u.gender == 'Female').length
+  const others = users.filter((u) => u.gender == 'Others').length
+
+  const ages = users.map((u) => getAge(u.birthday))
+  const sum = ages.reduce((a, b) => a + b, 0)
+  const averageAge = sum / ages.length || 0
+  return {
+    male,
+    female,
+    others,
+    averageAge,
+  }
+}
+
+const getAge = (dateString) => {
+  var today = new Date()
+  var birthDate = new Date(dateString)
+  var age = today.getFullYear() - birthDate.getFullYear()
+  var m = today.getMonth() - birthDate.getMonth()
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--
+  }
+  return age
 }

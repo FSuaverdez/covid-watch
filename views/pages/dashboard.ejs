@@ -47,6 +47,17 @@
           </h1>
         </div>
       </div>
+      <div class="ticket-graph">
+        <div class="bar-chart">
+          <canvas id="bar-chart-possible-gender"></canvas>
+        </div>
+        <div class="box">
+          <h2>Average age of possible COVID-19 Case</h2>
+          <h1>
+            <%= Math.round(possibleReport.averageAge) %> years old
+          </h1>
+        </div>
+      </div>
 
 
       <h1 class="red-center">User Report</h1>
@@ -109,6 +120,30 @@
           maintainAspectRatio: true
         }
       });
+
+      new Chart(document.getElementById("bar-chart-possible-gender"), {
+        type: 'bar',
+        data: {
+          labels: ["Male", "Female", "Others"],
+          datasets: [
+            {
+              label: "Gender of Possible COVID cases",
+              backgroundColor: ["#3e95cd", "#c45850", "#3cba9f"],
+              data: ['<%= possibleReport.male %>', '<%= possibleReport.female %>', '<%= possibleReport.others %>']
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'User Gender'
+          },
+          responsive: true,
+          maintainAspectRatio: true
+        }
+      });
+
 
 
       new Chart(document.getElementById("bar-chart-request"), {
