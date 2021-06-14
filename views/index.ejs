@@ -164,9 +164,9 @@
       // console.log(cases)
       let active = []
       let date = []
-
+      console.log(cases)
       cases.forEach(c => {
-        active.push(c.Confirmed)
+        active.push(c.Active)
         date.push(new Date(c.Date).toDateString())
 
       });
@@ -177,7 +177,7 @@
       const data = {
         labels: date,
         datasets: [{
-          label: 'Covid cases',
+          label: 'Active Covid Cases',
           data: active,
           fill: false,
           borderColor: '#cc311a',
